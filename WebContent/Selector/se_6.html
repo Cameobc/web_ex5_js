@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	A<input type="checkbox" id="all" onclick="f1()">
+	1<input type="checkbox" checked="checked" class="c1" onclick="f2()">
+	2<input type="checkbox" class="c1" onclick="f2()">
+	3<input type="checkbox" class="c1" onclick="f2()">
+<script type="text/javascript">
+		var c1=document.getElementsByClassName("c1");
+		var all=document.getElementById("all");
+	function f1(){
+		if(all.checked){
+		 	for(var i=0; i<c1.length; i++){
+				c1[i].checked=true;
+			}
+		}else{
+	 	 	for(var i=0; i<c1.length; i++){
+				c1[i].checked=false;
+			}  
+		}
+	}
+	function f2(){
+		var result = true;
+		for(var i=0; i<c1.length;i++){
+			if(!c1[i].checked){
+				result=false;
+				break;
+			}
+			/* if(c1[i].checked){
+				all.checked=true;
+			}else{
+				all.checked=false;
+			} */
+		}
+		all.checked=result;
+	}
+</script>
+</body>
+</html>

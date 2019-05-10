@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+  <h2>Join Form</h2>
+  <form action="./jquery_8.html" name="form">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" class="form-control" id="id" placeholder="Enter id" name="id" title="id">
+      <input type="button" value="중복확인" id="btnid">
+      <div id="idcheck" class="checkAll"></div>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+      <div class ="pwc"></div>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwdr" placeholder="Enter password" name="pwd">
+      <div class="pwc"></div>
+    </div>
+       <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <div id="emcheck" class="checkAll"></div>
+    </div>
+     <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="text" class="form-control" id="phone" placeholder="Enter PhoneNumber" name="phone">
+    </div>
+    <input type="button" class="btn btn-default" value="Join">
+  </form>
+</div>
+<script type="text/javascript">
+	$('.btn').click(function() {
+			var c = true;
+		$('.form-control').each(function() {
+			if(($(this).prop('value'))==''){
+				c = false;
+			}
+		});
+			if(c==true && ($('.checkAll').html())=='' && ($('.pwc').html())==''&& ($('#emcheck').html())==''){
+				$('form').submit();
+			}else{
+				alert("양식을 확인해주세요.");
+			}
+	});
+	//**********************************************SUBMIT하기
+	$('#btnid').click(function() {
+		open("./jquery_9.html", "_blank", "width=500px, height=200px, top=100px, left=500px")
+		$('#idcheck').empty();
+	});
+	//**********************************************중복확인창띄우기
+	$('#id').click(function() {
+		var id = document.getElementById("id");
+		id = id.value;
+		$('#id').change(function() {
+		var c = true;
+			if(id!=($(this).attr('value'))){
+				c=false;
+			}
+			if(c==true){
+				$('#idcheck').empty();	
+			}else{
+				$('#idcheck').html("ID 중복확인을 해주세요.");
+			}
+		});		
+	});
+	//**********************************************중복확인 안누르고 value바꾸면 html뜨도록
+	$('#pwdr').keyup(function() {
+		var pw1 = document.getElementById('pwd');
+		var pw2 = document.getElementById('pwdr');
+		if(pw1.value!=pw2.value){
+			$('.pwc').html("비밀번호가 일치하지 않습니다.");
+		}else if(pw1.value.length<6 || pw2.value.length<6){
+			$('.pwc').html("비밀번호는 최소 6자 이상으로 작성해주세요.");
+		}else{
+			$('.pwc').empty();
+		}
+	});
+	$('#pwd').blur(function() {
+		var pw1 = document.getElementById('pwd');
+		var pw2 = document.getElementById('pwdr');
+		if(pw1.value!=pw2.value){
+			$('.pwc').html("비밀번호가 일치하지 않습니다.");
+		}else if(pw1.value.length<6 || pw2.value.length<6){
+			$('.pwc').html("비밀번호는 최소 6자 이상으로 작성해주세요.");
+		}else{
+			$('.pwc').empty();
+		}
+	});
+	//**********************************************비밀번호확인
+  	$('#email').blur(function() {
+		var email= document.getElementById("email");
+		var a = email.value.indexOf("@");
+		var b = email.value.indexOf(".", a);
+		var c = email.value.substring(0, b);
+		var d = email.value.indexOf(".", b+1);
+		c= c.indexOf(".");
+		if(a ==-1 || b==-1 |c!=-1 | d!=-1){
+			$('#emcheck').html("이메일 양식에 맞춰 작성해주세요.");
+		}else{
+			$('#emcheck').empty();
+		}
+	});   
+</script>
+</body>
+</html>

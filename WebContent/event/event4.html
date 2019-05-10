@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		var i1 = document.getElementById("i1"); /*=document.fr.test*/
+		var btn = document.getElementById("btn1");
+		
+		document.fr.test.value="ddddd";
+		
+		btn1.addEventListener("click", function() {
+			if(i1.value!=''){
+				document.getElementById("frm").submit();
+			}else{
+				alert("비었습니다.");
+				document.getElementById("btn2").click();
+			}
+		});
+	}
+</script>
+</head>
+<body>
+	<form action="./event_ex2.html" id="frm" name="fr">
+		<input type="text" name="test" id="i1">
+		<input type="button" value="btn1" id="btn1">
+		<input type="submit" value="btn2" id="btn2">
+		<button>btn3</button>
+	</form>
+</body>
+</html>

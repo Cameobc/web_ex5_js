@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="text" value="abcd" id="info1"><br>
+	<button onclick="f1()">CLICK</button>
+	<button onclick="f2(53)">CLICK2</button>
+	<button onclick="f3()">CLICK3</button>
+	<input type="button" value="CLICK4" onclick="f4()">
+<script type="text/javascript">
+//함수명 f4
+//prompt실행
+//입력받은 데이터를 info1에 입력
+	var info1=document.getElementById('info1');
+	function f4(){
+		var prom = window.prompt("원하는 내용을 입력하세요.");
+		info1.value = prom;
+}
+	function f3(){
+		var v = info1.value;
+		alert(v);
+	}
+	function f1() {
+		alert("CLICK");
+	}
+	function f2(num) {
+		alert(num*3);
+	}
+</script>
+</body>
+</html>

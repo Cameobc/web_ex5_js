@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<img alt="cat" src="./images/cat1.jpg" id="i1" class="c1" title="t1">
+	<br>
+	<button onclick="f1()">Click</button>
+	<button onclick="f2()">CHANGE</button>
+	<button onclick="f3()">Toggle</button>
+	
+<script type="text/javascript">
+	function f1() {
+		//attribute 가지고오기
+		//cat.getAttribute("속성명");
+		//attribute 변경 or 추가
+		//cat.setAttribute("속성명", "값")		
+		var cat = document.getElementById('i1');
+		alert(cat.alt);
+		alert(cat.src);
+		alert(cat.id);
+		alert(cat.className);
+		alert(cat.title);
+		alert(cat.getAttribute("class"))
+	}
+	function f2(){
+		var cat = document.getElementById('i1');
+		cat.setAttribute("src", "./images/먼치킨고양이2.JPG")
+	}
+	var check=true;
+	function f3(){
+		var cat = document.getElementById('i1');
+		if(check){
+			cat.src="./images/먼치킨고양이2.JPG"
+		}else{
+			cat.src="./images/cat1.jpg"
+		}
+		check=!check;
+		/*if(cat.src=="http://localhost/web_ex5_js/images/cat1.jpg"){
+			cat.setAttribute("src", "./images/먼치킨고양이2.JPG")
+		}else{
+			cat.setAttribute("src", "./images/cat1.jpg")
+		} */
+	}
+</script>	
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+	.d{
+		cursor : pointer;
+		color: red;
+	}
+</style>
+</head>
+<body>
+	<button id="btn">ADD</button>
+	<div id ="di">
+	</div>
+<script type="text/javascript">
+	var id =0;
+	$('#btn').click(function() {
+		if(id>4){
+			alert("더는 만들 수 없습니다.");
+		}else{
+		/* 	$('#di').append('<div id="d'+id+'"><input type="file"><span class="d">X</span></div>'); */
+			$('#di').append('<div id="d'+id+'"><input type="file"><span title=d'+id+' class="d">X</span></div>');
+			id++;
+		}
+	});
+ 	
+ 	$('#di').on('click', '.d', function() {
+		var i =$(this).attr("title");
+		$('#'+i).remove();
+		id--;
+	});  
+</script>
+</body>
+</html>
