@@ -18,11 +18,7 @@
 			}
 		});
 		$('#pwd1').blur(function() {
-			if($(this).val()==$('#pwd2').val()){
-				alert("일치");
-			}else{
-				alert("불일치");
-				$(this).val('');
+				$('#pwd2').val('');
 			}
 		});
 		
