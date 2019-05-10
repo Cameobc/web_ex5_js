@@ -9,8 +9,37 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		$('#pwd2').blur(function() {
+			if($(this).val()==$('#pwd1').val()){
+				alert("일치");
+			}else{
+				alert("불일치");
+				$(this).val('');
+			}
+		});
+		
+		//*********************************************
+		$('#id').change(function() {
+			$('#idConfirm').val('0');
+		});
+		//********************************************중복확인창
+		$('#idcheck').click(function() {
+			open('jquery_9t.html', '_blank', 'width=500px, height=300px;')
+		});
+		
+		//*******************************************submit
 		$('#btn').click(function() {
-			$('#frm').submit();
+			var r = true;
+			$('.form-control').each(function() {
+				if($(this).val() == ''){
+					r = false;
+				}
+			});
+			if(r && $('#idConfirm').val()=='1'){
+				$('#frm').submit();
+			}else{
+				alert("모두 작성하세요");
+			}	
 		});
 	});
 </script>
@@ -21,28 +50,25 @@
   <form action="./jquery_8.html" id="frm">
     <div class="form-group">
       <label for="id">Id:</label>
-      <input type="text" required="required" class="form-control" id="id" placeholder="Enter id" name="id" title="id">
-      <input type="button" value="중복확인" id="btnid">
-      <div id="idcheck" class="checkAll"></div>
+      <input type="text" class="form-control" id="id" placeholder="Enter id" name="id" title="id">
+      <input type="hidden" id="idConfirm" value="0">
+      <input type="button" value="중복확인" id="idcheck">
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" required="required" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
-      <div class ="pwc"></div>
+      <input type="password"  class="form-control" id="pwd1" placeholder="Enter password" name="pwd">
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>
-      <input type="password" required="required" class="form-control" id="pwdr" placeholder="Enter password" name="pwd">
-      <div class="pwc"></div>
+      <input type="password" class="form-control" id="pwd2" placeholder="Enter password" name="pwd">
     </div>
        <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" required="required" class="form-control" id="email" placeholder="Enter email" name="email">
-      <div id="emcheck" class="checkAll"></div>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
     </div>
      <div class="form-group">
       <label for="phone">Phone:</label>
-      <input type="text" required="required" class="form-control" id="phone" placeholder="Enter PhoneNumber" name="phone">
+      <input type="text" class="form-control" id="phone" placeholder="Enter PhoneNumber" name="phone">
     </div>
     <input type="button" class="btn btn-default" value="Join" id ="btn">
   </form>
